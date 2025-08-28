@@ -28,3 +28,20 @@ body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial
   box-shadow: 0 2px 6px rgba(0,0,0,.2);
   font-size: 14px;
 }
+
+.locate-btn {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  z-index: 1000;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
+  background: #2e7d32;
+  color: #fff;
+  font-size: 32px;
+  box-shadow: 0 2px 6px rgba(0,0,0,.25);
+  cursor: pointer;
+}
+.locate-btn:active { transform: scale(0.98); }

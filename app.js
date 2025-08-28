@@ -7,6 +7,7 @@ const API_HEADERS = {
 };
 
 const filterFiveEl = document.getElementById("filterFive");
+const locateBtn = document.getElementById("locateBtn");
 const map = L.map("map");
 const tiles = L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
   attribution: "&copy; OpenStreetMap contributors",
@@ -216,5 +217,20 @@ if (filterFiveEl) {
     // force a refetch even if position/zoom hasn't changed
     lastFetchKey = "";
     fetchEstablishments();
+  });
+}
+
+if (locateBtn) {
+  locateBtn.addEventListener("click", () => {
+    if (!navigator.geolocation) return;
+    navigator.geolocation.getCurrentPosition(
+      (pos) => {
+        const { latitude, longitude } = pos.coords;
+        map.setView([latitude, longitude], 18);
+        fetchEstablishments();
+      },
+      () => {},
+      { enableHighAccuracy: true, timeout: 8000 }
+    );
   });
 }
