@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+  <defs>
+    <linearGradient id="g" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0" stop-color="#43a047"/>
+      <stop offset="1" stop-color="#2e7d32"/>
+    </linearGradient>
+  </defs>
+  <rect width="128" height="128" rx="22" ry="22" fill="url(#g)"/>
+  <g transform="translate(16,16)">
+    <circle cx="48" cy="48" r="40" fill="white" opacity="0.15"/>
+    <path d="M48 12c19 0 36 12 36 32 0 28-36 56-36 56S12 72 12 44c0-20 17-32 36-32z" fill="#fff"/>
+    <circle cx="48" cy="44" r="18" fill="#2e7d32"/>
+    <text x="48" y="50" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700" fill="#fff">FHRS</text>
+  </g>
+</svg>
