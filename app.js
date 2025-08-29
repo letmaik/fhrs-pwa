@@ -8,11 +8,17 @@ const API_HEADERS = {
 
 const filterFiveEl = document.getElementById("filterFive");
 const locateBtn = document.getElementById("locateBtn");
-const map = L.map("map");
+const map = L.map("map", {
+  attributionControl: false
+});
 const tiles = L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
   attribution: "&copy; OpenStreetMap contributors",
   minZoom: 9,
   maxZoom: 19
+}).addTo(map);
+
+L.control.attribution({
+  position: 'bottomleft'
 }).addTo(map);
 
 const markers = L.layerGroup().addTo(map);
