@@ -199,13 +199,13 @@ function renderEstablishments(list) {
 // Setup map and geolocate
 (function init() {
   const fallback = [51.5074, -0.1278]; // London
-  map.setView(fallback, 14);
+  map.setView(fallback, 17);
 
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(
       (pos) => {
         const { latitude, longitude } = pos.coords;
-        map.setView([latitude, longitude], 15);
+        map.setView([latitude, longitude], 17);
         fetchEstablishments();
       },
       () => {
@@ -225,6 +225,8 @@ if (filterFiveEl) {
   filterFiveEl.addEventListener("change", () => {
     // force a refetch even if position/zoom hasn't changed
     lastFetchKey = "";
+    markers.clearLayers();
+    markerIndex.clear();
     fetchEstablishments();
   });
 }
