@@ -1,8 +1,6 @@
-# fhrs-pwa
+# UK Food Hygiene Ratings Map
 
-UK Food Hygiene Rating Map
-
-https://letmaik.github.io/fhrs-pwa/
+https://letmaik.github.io/uk-food-hygiene-ratings-map/
 
 Tip: Best used on mobile phones. On iPhones, go fullscreen via Share -> Add to Home Screen.
 
