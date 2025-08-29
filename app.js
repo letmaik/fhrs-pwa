@@ -22,6 +22,8 @@ L.control.attribution({
 }).addTo(map);
 
 const markers = L.layerGroup().addTo(map);
+// Track markers by a stable id to avoid re-adding existing ones
+const markerIndex = new Map();
 let lastFetchKey = "";
 
 // Rating color mapping (covers FHRS and Scottish schemes)
@@ -93,6 +95,7 @@ async function fetchEstablishments() {
   const zoom = map.getZoom();
   if (zoom < 17) {
     markers.clearLayers();
+    markerIndex.clear();
     lastFetchKey = "";
     return;
   }
@@ -133,8 +136,7 @@ async function fetchEstablishments() {
 }
 
 function renderEstablishments(list) {
-  markers.clearLayers();
-
+  // Keep existing markers and only add new ones
   const seen = new Set();
   list.forEach(e => {
     const geo = e.geocode || e.Geocode || {};
@@ -143,7 +145,7 @@ function renderEstablishments(list) {
     if (!isFinite(lat) || !isFinite(lng)) return;
 
     const id = e.FHRSID || e.FhrsId || e.id || `${lat},${lng}`;
-    if (seen.has(id)) return; seen.add(id);
+    if (seen.has(id) || markerIndex.has(id)) return; seen.add(id);
 
     const val = e.RatingValue || e.ratingValue || e.RatingKey || e.ratingKey || "";
     const color = ratingColor(val);
@@ -190,6 +192,7 @@ function renderEstablishments(list) {
 
     m.bindPopup(popup);
     markers.addLayer(m);
+    markerIndex.set(id, m);
   });
 }
 
